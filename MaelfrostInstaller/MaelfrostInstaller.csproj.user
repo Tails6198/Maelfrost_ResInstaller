@@ -4,16 +4,25 @@
     <Compile Update="Controls\CommandLink.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Controls\CustomProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\DarkAwareButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Controls\WinUIButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
+    <Compile Update="FrmWizard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Pages\ConfirmOperationPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Pages\EulaPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Pages\ProgressPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Pages\WelcomePage.cs">

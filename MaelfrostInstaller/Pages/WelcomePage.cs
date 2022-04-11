@@ -15,20 +15,25 @@ namespace MaelfrostInstaller.Pages
                 cmbInstallNOW = value;
             }
         }
-        //public CommandLinkButton UninstallButton
-        //{
-        //    get
-        //    {
-        //        return cmbUninstall;
-        //    }
-        //    set
-        //    {
-        //        cmbUninstall = value;
-        //    }
-        //}
+        public CommandLinkButton UninstallButton
+        {
+            get
+            {
+                return cmbUninstall;
+            }
+            set
+            {
+                cmbUninstall = value;
+            }
+        }
         public WelcomePage()
         {
             InitializeComponent();
+        }
+
+        private void cmbInstallNOW_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
