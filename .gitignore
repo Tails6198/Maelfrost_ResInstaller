@@ -1,0 +1,9 @@
+# visual studio garbage
+.vs/
+
+# builds
+MaelfrostInstaller/bin/
+MaelfrostInstaller/obj
+
+# bak files
+*.bak
