@@ -4,7 +4,7 @@ namespace MaelfrostInstaller.Pages
 {
     public partial class WelcomePage : WizardPage
     {
-        public CommandLinkButton InstallButton
+        public FakeCommandLink InstallButton
         {
             get
             {
@@ -15,7 +15,7 @@ namespace MaelfrostInstaller.Pages
                 cmbInstallNOW = value;
             }
         }
-        public CommandLinkButton UninstallButton
+        public FakeCommandLink UninstallButton
         {
             get
             {
@@ -29,11 +29,6 @@ namespace MaelfrostInstaller.Pages
         public WelcomePage()
         {
             InitializeComponent();
-        }
-
-        private void cmbInstallNOW_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MaelfrostInstaller.Controls
         protected override void CreateHandle()
         {
             base.CreateHandle();
-            _ = Form1.SetWindowTheme(this.Handle, "DarkMode_Explorer", null);
+            _ = FrmWizard.SetWindowTheme(this.Handle, "DarkMode_Explorer", null);
             FlatStyle = FlatStyle.System;
         }
     }

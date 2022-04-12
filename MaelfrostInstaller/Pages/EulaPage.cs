@@ -1,4 +1,5 @@
-﻿using MaelfrostInstaller.Controls;
+﻿using Microsoft.Win32;
+using MaelfrostInstaller.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,36 @@ namespace MaelfrostInstaller.Pages
         public EulaPage()
         {
             InitializeComponent();
+            SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
+            if (Theme.IsUsingDarkMode)
+            {
+                richTextBox1.BackColor = Color.Black;
+                richTextBox1.ForeColor = Color.White;
+            }
+            else
+            {
+                richTextBox1.BackColor = Color.White;
+                richTextBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            switch (e.Category)
+            {
+                case UserPreferenceCategory.General:
+                    if (Theme.IsUsingDarkMode)
+                    {
+                        richTextBox1.BackColor = Color.Black;
+                        richTextBox1.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        richTextBox1.BackColor = Color.White;
+                        richTextBox1.ForeColor = Color.Black;
+                    }
+                    break;
+            }
         }
     }
 }

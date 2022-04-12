@@ -5,18 +5,20 @@ using MaelfrostInstaller.Pages;
 
 namespace MaelfrostInstaller
 {
-    public partial class Form1 : Form
+    public partial class FrmWizard : Form
     {
         private static readonly WelcomePage WelcomePage = new();
         private static readonly EulaPage EulaPage = new();
+        private static readonly InstalllOptnsPage InstallOptions = new();
         private static readonly ConfirmOperationPage ConfirmOpPage = new();
         private static readonly ProgressPage ProgressPage = new();
+        private static FinishPage? FinishPage;
 
         private WizardPage CurrentPage;
 
         //Visual studio does not understand that we assign "CurrentPage" in Navigate()
 #pragma warning disable CS8618
-        public Form1()
+        public FrmWizard()
 #pragma warning restore CS8618
         {
             InitializeComponent();
@@ -28,33 +30,6 @@ namespace MaelfrostInstaller
 
             SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         }
-
-        #region EULA Page
-        private void AcceptButton_Click(object? sender, EventArgs e)
-        {
-            var pg = new TaskDialogPage()
-            {
-                Icon = TaskDialogIcon.ShieldErrorRedBar,
-
-                Text = "Why did you click this button?",
-                Heading = "Failure",
-                Caption = "Project Maelfrost - Installer",
-                Footnote = new TaskDialogFootnote()
-                {
-                    Text = "Really though, stop breaking things."
-                },
-                Expander = new TaskDialogExpander()
-                {
-                    Text = "You have attempted to navigate to a missing page. Well done you. Unfortunately, this operation has been stopped as it could cause a buffer overrun on your computer. This is bad. Press OK to go back to the welcome page. If this does not solve the issue - which it won't, please don't contact the author of this application."
-                }
-            };
-            TaskDialog.ShowDialog(this, pg);
-        }
-        private void DenyButton_Click(object? sender, EventArgs e)
-        {
-            Navigate(WelcomePage);
-        }
-        #endregion
         #region Welcome Page
         private void InstallButton_Click(object? sender, EventArgs e)
         {
@@ -67,16 +42,16 @@ namespace MaelfrostInstaller
             {
                 Icon = TaskDialogIcon.ShieldErrorRedBar,
 
-                Text = "Why did you click this button?",
-                Heading = "Failure",
+                Text = "Uninstalling has not be implemented yet.",
+                Heading = "Security Failure",
                 Caption = "Project Maelfrost - Installer",
                 Footnote = new TaskDialogFootnote()
                 {
-                    Text = "Really though, stop breaking things."
+                    Text = "By Frozen Snow"
                 },
                 Expander = new TaskDialogExpander()
                 {
-                    Text = "You have attempted to uninstall something that's not even installed. In fact, this installer isn't even remotely complete. Why did you even try to click this button? Seems like a waste of your - and my - time. Thankfully, I did some error handling andthis operation has been stopped as it could cause a buffer overrun on your computer. As you may have guessed, that is bad. It is also not true at all, nothing would happen anyway. I just used this as an excuse to waste your time, as you have wasted mine. Press OK to admit to your mistakes. Perhaps Frozen Snow will forgive you, maybe."
+                    Text = "Unfortunately, you will not be able to uninstall Maelfrost."
                 }
             };
             TaskDialog.ShowDialog(this, pg);
@@ -102,6 +77,8 @@ namespace MaelfrostInstaller
 
                 BtnBack.ButtonText = "Disagree";
                 BtnNext.ButtonText = "Agree";
+
+                panel1.Visible = true;
             }
             else if (page == ConfirmOpPage)
             {
@@ -113,6 +90,24 @@ namespace MaelfrostInstaller
 
                 BtnBack.ButtonText = "Back";
                 BtnNext.ButtonText = "Install";
+                panel1.Visible = true;
+            }
+            else if (page == FinishPage)
+            {
+                BtnNext.Visible = true;
+                BtnNext.ButtonText = "Finish";
+            }
+            else if (page == InstallOptions)
+            {
+                BtnBack.Visible = true;
+                BtnNext.Visible = true;
+
+                BtnBack.Enabled = true;
+                BtnNext.Enabled = true;
+
+                BtnBack.ButtonText = "Back";
+                BtnNext.ButtonText = "Next";
+                panel1.Visible = true;
             }
             else
             {
@@ -124,19 +119,44 @@ namespace MaelfrostInstaller
 
                 BtnBack.ButtonText = "Back";
                 BtnNext.ButtonText = "Next";
+                panel1.Visible = false;
             }
 
             FixColors();
+        }
+        internal void Complete(PMaelfrostInstallerWizardCompleteInstallerEnum type, string errorDescription)
+        {
+            FinishPage = new FinishPage();
+            if (type == PMaelfrostInstallerWizardCompleteInstallerEnum.Success)
+            {
+                FinishPage.MainText.Text = "Project Maelfrost has been installed.\nPlease reboot for the changes to take affect.";
+            }
+            else
+            {
+                FinishPage.MainText.Text = "Error, the installation of Project Maelfrost has failed.\nPlease report the following error: " + errorDescription;
+            }
+            Navigate(FinishPage);
         }
         #endregion
         private void Form1_Shown(object sender, EventArgs e)
         {
             var buildNumber = Environment.OSVersion.Version.Build;
 
-            _ = SetWindowTheme(this.Handle, "DarkMode_Explorer", null);
-            _ = DarkMode.AllowDarkModeForWindow(this.Handle, true);
+            // _ = SetWindowTheme(this.Handle, "DarkMode_Explorer", null);
+            try
+            {
+                _ = DarkMode.AllowDarkModeForWindow(this.Handle, true);
+            }
+            catch
+            {
 
-            SetTitlebarColor();
+            }
+
+            try
+            {
+                SetTitlebarColor();
+            }
+            catch { }
 
             try
             {
@@ -330,24 +350,51 @@ namespace MaelfrostInstaller
             else if (CurrentPage == ConfirmOpPage)
             {
                 //The user clicked on "Back" when on the confirm install/uninstall page
+                Navigate(InstallOptions);
+            }
+            else if (CurrentPage == InstallOptions)
+            {
+                //The user clicked on "Back" when on the confirm install/uninstall page
                 Navigate(EulaPage);
             }
+            
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
         {
             if (CurrentPage == EulaPage)
             {
+                //Show install options page
+                Navigate(InstallOptions);
+
+
+            }
+            else if (CurrentPage == InstallOptions)
+            {
                 //We are about to install it
                 Navigate(ConfirmOpPage);
 
                 //Change text
-                ConfirmOpPage.TextLable.Text = "You are about to do the following operation:\nInstall Project Maelfrost on top of this Windows Installation";
+                ConfirmOpPage.TextLable.Text = "You are about to do the following operation:\nInstall Project Maelfrost on top of this Windows Installation\n\nIt is recommended you save your work before installing.";
             }
-            else if(CurrentPage == ConfirmOpPage)
+            else if (CurrentPage == ConfirmOpPage)
             {
-                //Install/Uninstall the OS
+                //Install/Uninstall Project Maelfrost
                 Navigate(ProgressPage);
+
+                IPMaelfrostInstaller installer = new PMaelfrostInstaller();
+                installer.SetParentWizard(new PMaelfrostInstallerWizard(this, ProgressPage));
+
+                var thread = new Thread(delegate ()
+                {
+                    installer.Install();
+                });
+                thread.Start();
+            }
+            else if (CurrentPage == FinishPage)
+            {
+                //We are done
+                Application.Exit();
             }
         }
         private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
@@ -359,6 +406,11 @@ namespace MaelfrostInstaller
                     lblTopText.Invalidate();
                     break;
             }
+        }
+
+        private void NavigationButton1_Click(object sender, EventArgs e)
+        {
+            BtnBack_Click(sender, e);
         }
     }
 }

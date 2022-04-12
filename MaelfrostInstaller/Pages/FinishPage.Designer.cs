@@ -1,8 +1,6 @@
-﻿using AeroWizard;
-
-namespace MaelfrostInstaller.Pages
+﻿namespace MaelfrostInstaller.Pages
 {
-    partial class EulaPage
+    partial class FinishPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,49 +28,50 @@ namespace MaelfrostInstaller.Pages
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lblText = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // lblText
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(159, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(423, 327);
-            this.richTextBox1.TabIndex = 14;
-            this.richTextBox1.Text = "WIP EULA";
+            this.lblText.AutoSize = true;
+            this.lblText.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblText.ForeColor = System.Drawing.Color.White;
+            this.lblText.Location = new System.Drawing.Point(8, 16);
+            this.lblText.Name = "lblText";
+            this.lblText.Size = new System.Drawing.Size(249, 21);
+            this.lblText.TabIndex = 13;
+            this.lblText.Text = "Please select an installation mode.";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::MaelfrostInstaller.Properties.Resources.eula;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 180);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::MaelfrostInstaller.Properties.Resources.MaelfrostInstaller;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(8, 177);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // EulaPage
+            // FinishPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.richTextBox1);
-            this.Name = "EulaPage";
-            this.WizardTopText = "Please accept the following licensing agreement";
+            this.Controls.Add(this.lblText);
+            this.Name = "FinishPage";
+            this.WizardTopText = "Finished";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private RichTextBox richTextBox1;
+
+        private Label lblText;
         private PictureBox pictureBox1;
     }
 }
