@@ -1,8 +1,6 @@
 # Hi
 
-This is a repository for the Maelfrost installer, which will patch a base ISO of Windows 11 to become Project Maelfrost.
-
-In order to build the code here, you're going to need Visual Studio 2022, .NET 6 and some other nonsense I forgot about while writing this readme. Just install everything.
+This is a simple system resource patcher for Maelfrost that will run as part of the OOB phase.
 
 
 # Ok but is it done?
