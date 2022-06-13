@@ -41,7 +41,7 @@
             this.chkExploderPatcher.Name = "chkExploderPatcher";
             this.chkExploderPatcher.Size = new System.Drawing.Size(143, 19);
             this.chkExploderPatcher.TabIndex = 0;
-            this.chkExploderPatcher.Text = "Install Project Maelfrost Shell";
+            this.chkExploderPatcher.Text = "Install Maelfrost Shell";
             this.chkExploderPatcher.UseVisualStyleBackColor = true;
             // 
             // InstalllOptnsPage

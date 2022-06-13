@@ -1,6 +1,4 @@
-﻿using AeroWizard;
-
-namespace MaelfrostInstaller.Pages
+﻿namespace MaelfrostInstaller.Pages
 {
     partial class EulaPage
     {
@@ -30,6 +28,7 @@ namespace MaelfrostInstaller.Pages
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EulaPage));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -45,7 +44,7 @@ namespace MaelfrostInstaller.Pages
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(423, 327);
             this.richTextBox1.TabIndex = 14;
-            this.richTextBox1.Text = "WIP EULA";
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // pictureBox1
             // 
@@ -65,7 +64,7 @@ namespace MaelfrostInstaller.Pages
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.richTextBox1);
             this.Name = "EulaPage";
-            this.WizardTopText = "Please accept the following licensing agreement";
+            this.WizardTopText = "Please read the following before continuing";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

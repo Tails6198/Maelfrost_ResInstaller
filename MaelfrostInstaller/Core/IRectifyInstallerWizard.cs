@@ -9,11 +9,11 @@ namespace MaelfrostInstaller
 {
     //
     //
-    //   IPMaelfrostInstaller Interface
+    //   IMaelfrostCoreInstaller Interface
     //
     //
 
-    public interface IPMaelfrostInstallerWizard
+    public interface IMaelfrostCoreInstallerWizard
     {
         /// <summary>
         /// Sets progress bar value
@@ -28,9 +28,9 @@ namespace MaelfrostInstaller
         /// <summary>
         /// Tell the installer that it's work is completed.
         /// </summary>
-        void CompleteInstaller(PMaelfrostInstallerWizardCompleteInstallerEnum type, string ErrorDescription = "");
+        void CompleteInstaller(MaelfrostCoreInstallerWizardCompleteInstallerEnum type, string ErrorDescription = "");
     }
-    public enum PMaelfrostInstallerWizardCompleteInstallerEnum
+    public enum MaelfrostCoreInstallerWizardCompleteInstallerEnum
     {
         Success,
         Fail
@@ -38,21 +38,21 @@ namespace MaelfrostInstaller
 
     //
     //
-    //   PMaelfrostInstallerWizard implementation
+    //   MaelfrostCoreInstallerWizard implementation
     //
     //
 
-    internal class PMaelfrostInstallerWizard : IPMaelfrostInstallerWizard
+    internal class MaelfrostCoreInstallerWizard : IMaelfrostCoreInstallerWizard
     {
         private readonly FrmWizard Wizard;
         private readonly ProgressPage ProgressPage;
-        internal PMaelfrostInstallerWizard(FrmWizard wizard, ProgressPage pg)
+        internal MaelfrostCoreInstallerWizard(FrmWizard wizard, ProgressPage pg)
         {
             this.Wizard = wizard;
             this.ProgressPage = pg;
         }
 
-        public void CompleteInstaller(PMaelfrostInstallerWizardCompleteInstallerEnum type, string ErrorDescription = "")
+        public void CompleteInstaller(MaelfrostCoreInstallerWizardCompleteInstallerEnum type, string ErrorDescription = "")
         {
             ProgressPage.Invoke((MethodInvoker)delegate ()
             {
@@ -79,21 +79,21 @@ namespace MaelfrostInstaller
 
     //
     //
-    //   PMaelfrostInstaller Interface
+    //   MaelfrostCoreInstaller Interface
     //
     //
     /// <summary>
-    /// The class implementing this interface is what installs Project Maelfrost
+    /// The class implementing this interface is what installs Maelfrost
     /// </summary>
-    public interface IPMaelfrostInstaller
+    public interface IMaelfrostCoreInstaller
     {
         /// <summary>
-        /// Used for storing the IPMaelfrostInstallerWizard instance
+        /// Used for storing the IMaelfrostCoreInstallerWizard instance
         /// </summary>
         /// <param name="wiz"></param>
-        void SetParentWizard(IPMaelfrostInstallerWizard wiz);
+        void SetParentWizard(IMaelfrostCoreInstallerWizard wiz);
         /// <summary>
-        /// Install Project Maelfrost
+        /// Install Maelfrost
         /// </summary>
         void Install();
     }

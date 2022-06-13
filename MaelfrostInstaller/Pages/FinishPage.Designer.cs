@@ -42,7 +42,7 @@
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(249, 21);
             this.lblText.TabIndex = 13;
-            this.lblText.Text = "Please select an installation mode.";
+            this.lblText.Text = "Butts";
             // 
             // pictureBox1
             // 

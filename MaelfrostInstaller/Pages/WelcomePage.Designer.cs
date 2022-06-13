@@ -48,7 +48,7 @@ namespace MaelfrostInstaller.Pages
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(249, 21);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Please select an installation mode.";
+            this.label2.Text = "Please select an option below.";
             // 
             // pictureBox1
             // 
@@ -78,10 +78,10 @@ namespace MaelfrostInstaller.Pages
             this.cmbInstallNOW.BackColor = System.Drawing.Color.Transparent;
             this.cmbInstallNOW.Location = new System.Drawing.Point(3, 3);
             this.cmbInstallNOW.Name = "cmbInstallNOW";
-            this.cmbInstallNOW.Note = "Installs Maelfrost on top of this Windows Installation";
+            this.cmbInstallNOW.Note = "Installs the Project Maelfrost Resources";
             this.cmbInstallNOW.Size = new System.Drawing.Size(295, 80);
             this.cmbInstallNOW.TabIndex = 7;
-            this.cmbInstallNOW.Text = "Install Project Maelfrost";
+            this.cmbInstallNOW.Text = "Install Maelfrost Resources";
             // 
             // cmbUninstall
             // 
@@ -89,10 +89,10 @@ namespace MaelfrostInstaller.Pages
             this.cmbUninstall.Enabled = false;
             this.cmbUninstall.Location = new System.Drawing.Point(3, 89);
             this.cmbUninstall.Name = "cmbUninstall";
-            this.cmbUninstall.Note = "Restores Windows 11";
+            this.cmbUninstall.Note = "Restores all system resources to their defaults.";
             this.cmbUninstall.Size = new System.Drawing.Size(295, 80);
             this.cmbUninstall.TabIndex = 8;
-            this.cmbUninstall.Text = "Uninstall Project Maelfrost";
+            this.cmbUninstall.Text = "Uninstall Maelfrost Resources";
             // 
             // WelcomePage
             // 
@@ -102,7 +102,7 @@ namespace MaelfrostInstaller.Pages
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "WelcomePage";
-            this.WizardTopText = "Welcome to the Project Maelfrost Installer";
+            this.WizardTopText = "Welcome to the Project Maelfrost Resource Installer";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

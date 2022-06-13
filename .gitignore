@@ -4,6 +4,3 @@
 # builds
 MaelfrostInstaller/bin/
 MaelfrostInstaller/obj
-
-# bak files
-*.bak

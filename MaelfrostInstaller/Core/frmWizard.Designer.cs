@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmWizard));
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.lblTopText = new AeroWizard.ThemedLabel();
+            this.lblTopText = new Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.navigationButton1 = new MaelfrostInstaller.Controls.FunnyExplorer.Controls.NavigationButton();
             this.pnlBottom = new System.Windows.Forms.Panel();
@@ -77,9 +77,10 @@
             // 
             // navigationButton1
             // 
+            this.navigationButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.navigationButton1.BackColor = System.Drawing.Color.Transparent;
             this.navigationButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.navigationButton1.Location = new System.Drawing.Point(12, 12);
+            this.navigationButton1.Location = new System.Drawing.Point(10, 15);
             this.navigationButton1.Name = "navigationButton1";
             this.navigationButton1.NavigationButtonType = MaelfrostInstaller.Controls.FunnyExplorer.Controls.NavigationButtonType.back;
             this.navigationButton1.Size = new System.Drawing.Size(30, 30);
@@ -147,7 +148,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmWizard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Project Maelfrost Setup";
+            this.Text = "Maelfrost Setup";
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.pnlTop.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -161,7 +162,7 @@
         private Panel pnlTop;
         private Panel pnlBottom;
         private Panel pnlMain;
-        private AeroWizard.ThemedLabel lblTopText;
+        private Label lblTopText;
         private Panel panel1;
         private Controls.WinUIButton BtnBack;
         private Controls.WinUIButton BtnNext;

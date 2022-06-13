@@ -40,7 +40,7 @@
             this.lblOperation.Name = "lblOperation";
             this.lblOperation.Size = new System.Drawing.Size(322, 21);
             this.lblOperation.TabIndex = 13;
-            this.lblOperation.Text = "You are about to do the following operation: ";
+            this.lblOperation.Text = "You are about to do the following: ";
             // 
             // ConfirmOperationPage
             // 
