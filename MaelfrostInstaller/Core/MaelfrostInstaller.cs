@@ -99,6 +99,7 @@ namespace MaelfrostInstaller
 
 
                     //Take ownership of orginal file
+					TakeOwnership(usr.Path);
                     TakeOwnership(WinSxSFilePath);
                     TakeOwnership(fileProper);
                     TakeOwnership(item.Systempath);
@@ -169,8 +170,9 @@ namespace MaelfrostInstaller
         private void TakeOwnership(string path)
         {
             _ = PatcherHelper.TakeOwnership(path);
-            _ = PatcherHelper.GrantFullControl(path, "SYSTEM");
             _ = PatcherHelper.GrantFullControl(path, "Administrators");
+            _ = PatcherHelper.GrantFullControl(path, "SYSTEM");
+			// _ = PatcherHelper.GrantFullControl(path, "Everyone");
         }
         public void SetParentWizard(IMaelfrostCoreInstallerWizard wiz)
         {

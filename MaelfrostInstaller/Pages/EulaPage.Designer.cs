@@ -1,4 +1,7 @@
-﻿namespace MaelfrostInstaller.Pages
+﻿﻿using MaelfrostInstaller.Controls;
+
+
+namespace MaelfrostInstaller.Pages
 {
     partial class EulaPage
     {
@@ -29,7 +32,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EulaPage));
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new DarkRichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +74,7 @@
         }
 
         #endregion
-        private RichTextBox richTextBox1;
+        private DarkRichTextBox richTextBox1;
         private PictureBox pictureBox1;
     }
 }

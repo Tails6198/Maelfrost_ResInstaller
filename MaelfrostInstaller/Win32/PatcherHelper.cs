@@ -47,7 +47,7 @@ namespace MaelfrostInstaller.Win32
                     // Do not show a command window.
                     CreateNoWindow = true,
 
-                    Arguments = "/f " + fileName + " /a"
+                    Arguments = "/f " + fileName +" /a"
                 };
 
                 takeOwnProcess.EnableRaisingEvents = true;
@@ -71,6 +71,10 @@ namespace MaelfrostInstaller.Win32
 
                 // Now clean up after ourselves.
                 takeOwnProcess.Dispose();
+
+                if (!takeOwnSuccessful)
+                    Debugger.Break();
+
                 return takeOwnSuccessful;
             }
             public static bool GrantFullControl(string fileName, string userName)
@@ -155,6 +159,9 @@ namespace MaelfrostInstaller.Win32
                     resetPermissionsSuccessful = false;
                 }
 
+                if (!resetPermissionsSuccessful)
+                    Debugger.Break();
+				
                 // Now clean up after ourselves.
                 resetPermissionsProcess.Dispose();
                 return resetPermissionsSuccessful;
