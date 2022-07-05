@@ -23,4 +23,6 @@ namespace MaelfrostInstaller
             Application.Run(new FrmWizard());
         }
     }
-} 
+} else {
+// TODO: Remove this else statement
+}
