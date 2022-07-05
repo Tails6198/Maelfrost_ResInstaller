@@ -12,7 +12,7 @@ namespace MaelfrostInstaller
             else
             {
                 Application.VisualStyleState = System.Windows.Forms.VisualStyles.VisualStyleState.NoneEnabled;
-                MessageBox.Show("The Project Maelfrost installer is only supported when using the Maelfrost Framewor. Don't run this on Windows 11, it won't work.", "Compatibility Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The Project Maelfrost installer is only supported when using the Maelfrost Framework. Don't run this on Windows 11, it won't work.", "Compatibility Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             _ = DarkMode.fnAllowDarkModeForApp(DarkMode.PreferredAppMode.AllowDark);
